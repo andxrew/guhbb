@@ -14,6 +14,7 @@ import {
 	Headphones,
 	FileCode,
 	Settings,
+	Bot,
 } from "lucide-react"
 
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] })
@@ -27,32 +28,32 @@ const routes = [
 	},
 
 	{
-		label: "Conversation",
-		icon: MessageSquarePlus,
+		label: "ChatBot",
+		icon: Bot,
 		href: "/conversation",
-		color: "text-violet-500",
+		color: "text-green-500",
 	},
 
-	{
-		label: "Image Generation",
-		icon: FileImageIcon,
-		href: "/image",
-		color: "text-pink-700",
-	},
+	// {
+	// 	label: "Image Generation",
+	// 	icon: FileImageIcon,
+	// 	href: "/image",
+	// 	color: "text-pink-700",
+	// },
 
-	{
-		label: "Video Generation",
-		icon: Clapperboard,
-		href: "/video",
-		color: "text-orange-700",
-	},
+	// {
+	// 	label: "Video Generation",
+	// 	icon: Clapperboard,
+	// 	href: "/video",
+	// 	color: "text-orange-700",
+	// },
 
-	{
-		label: "Music Generation",
-		icon: Headphones,
-		href: "/music",
-		color: "text-emerald-500",
-	},
+	// {
+	// 	label: "Music Generation",
+	// 	icon: Headphones,
+	// 	href: "/music",
+	// 	color: "text-emerald-500",
+	// },
 
 	{
 		label: "Code Generation",

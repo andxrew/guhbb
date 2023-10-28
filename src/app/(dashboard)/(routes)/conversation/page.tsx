@@ -2,7 +2,7 @@
 
 import * as z from "zod"
 import axios from "axios"
-import { MessageSquarePlus } from "lucide-react"
+import { Bot } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 
@@ -64,11 +64,11 @@ const ConversationPage = () => {
 	return (
 		<div>
 			<Heading
-				title="Conversation"
-				description="Advanced Conversation Model - From Mathematics to Essay Writing"
-				icon={MessageSquarePlus}
-				iconColor="text-violet-500"
-				bgColor="bg-violet-500/10"
+				title="ChatBot"
+				description="Advanced ChatBot Model - From Pollution Stats to Essay Writing"
+				icon={Bot}
+				iconColor="text-green-500"
+				bgColor="bg-green-500/10"
 			/>
 			<div className="px-4 lg:px-8">
 				<div>
@@ -87,7 +87,7 @@ const ConversationPage = () => {
 												className="border-0 outline-none focus-visible:ring-0
                                             focus-visible:ring-transparent"
 												disabled={isLoading}
-												placeholder="How do i calculate the mass of the sun?"
+												placeholder="How do i lower my carbon footprint?"
 												{...field}
 											/>
 										</FormControl>
@@ -96,6 +96,7 @@ const ConversationPage = () => {
 							/>
 							<Button
 								className="col-span-12 lg:col-span-2 w-full"
+								variant={"green"}
 								disabled={isLoading}
 							>
 								Submit

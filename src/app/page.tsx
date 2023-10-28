@@ -214,10 +214,10 @@ export default function Example() {
 									y2="474.645"
 									gradientUnits="userSpaceOnUse"
 								>
-									<stop stopColor="#9089FC" />
+									<stop stopColor="#62e856" />
 									<stop
 										offset={1}
-										stopColor="#FF80B5"
+										stopColor="#62e856"
 									/>
 								</linearGradient>
 							</defs>

@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Dialog } from "@headlessui/react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { Weight } from "lucide-react"
+import Image from "next/image"
 
 const navigation = [
 	{ name: "Product", href: "#" },
@@ -55,11 +56,12 @@ export default function Example() {
 							className="-m-1.5 p-1.5"
 						>
 							<span className="sr-only">Your Company</span>
-							<img
+							<Image
 								className="h-8"
-								src="images/infinity_logo.png"
-								alt="infinity logo"
-								width="60" height="180"
+								src={"/public/images/infinity_logo.png"}
+								alt="infinity_logo"
+								width="60"
+								height="180"
 							/>
 						</a>
 					</div>

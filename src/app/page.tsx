@@ -4,6 +4,7 @@ import { Dialog } from "@headlessui/react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { Weight } from "lucide-react"
 import Image from "next/image"
+import { text } from "stream/consumers"
 
 const navigation = [
 	{ name: "Product", href: "#" },
@@ -58,7 +59,7 @@ export default function Example() {
 							<span className="sr-only">Your Company</span>
 							<Image
 								className="h-8"
-								src={"/public/images/infinity_logo.png"}
+								src={"/images/infinity_logo.png"}
 								alt="infinity_logo"
 								width="60"
 								height="180"
@@ -165,9 +166,7 @@ export default function Example() {
 								Sustainable AI for a Greener Tomorrow
 							</h1>
 							<p className="mt-6 text-lg leading-8 text-green-800 font-bold">
-								Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-								lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-								fugiat aliqua.
+							With Infinity, your interactions help contribute to UK tree charities such as <a href="https://www.woodlandtrust.org.uk" className="text-green-500" target="_blank">Woodland Trust</a> helping nurture our planets future and making a difference. Join us in creating art, music, and a greener world, one chat at a time.
 							</p>
 							<div className="mt-10 flex items-center justify-center gap-x-6">
 								<a

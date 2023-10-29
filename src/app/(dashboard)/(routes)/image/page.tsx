@@ -103,7 +103,7 @@ const ImagePage = () => {
 			/>
 			<div className="flex justify-between px-6 mb-2">
 				<h1 className="text-muted-foreground text-xs items-align">
-					1 tree planted for each 5 generations{" "}
+					1 tree planted for each generation{" "}
 				</h1>
 				<Badge variant="green">Trees Planted: {treeCount}</Badge>
 			</div>
@@ -111,18 +111,8 @@ const ImagePage = () => {
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
-						className="
-              rounded-lg
-              border
-              w-full
-              p-4
-              px-3
-              md:px-6
-              focus-within:shadow-sm
-              grid
-              grid-cols-12
-              gap-2
-            "
+						className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid
+                        grid-cols-12 gap-2"
 					>
 						<FormField
 							name="prompt"
@@ -139,68 +129,9 @@ const ImagePage = () => {
 								</FormItem>
 							)}
 						/>
-						{/* <FormField
-							control={form.control}
-							name="amount"
-							render={({ field }) => (
-								<FormItem className="col-span-12 lg:col-span-2">
-									<Select
-										disabled={isLoading}
-										onValueChange={field.onChange}
-										value={field.value}
-										defaultValue={field.value}
-									>
-										<FormControl>
-											<SelectTrigger>
-												<SelectValue defaultValue={field.value} />
-											</SelectTrigger>
-										</FormControl>
-										<SelectContent>
-											{amountOptions.map((option) => (
-												<SelectItem
-													key={option.value}
-													value={option.value}
-												>
-													{option.label}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-								</FormItem>
-							)}
-						/> */}
-						{/* <FormField
-							control={form.control}
-							name="resolution"
-							render={({ field }) => (
-								<FormItem className="col-span-12 lg:col-span-2">
-									<Select
-										disabled={isLoading}
-										onValueChange={field.onChange}
-										value={field.value}
-										defaultValue={field.value}
-									>
-										<FormControl>
-											<SelectTrigger>
-												<SelectValue defaultValue={field.value} />
-											</SelectTrigger>
-										</FormControl>
-										<SelectContent>
-											{resolutionOptions.map((option) => (
-												<SelectItem
-													key={option.value}
-													value={option.value}
-												>
-													{option.label}
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-								</FormItem>
-							)}
-						/> */}
+
 						<Button
-							className="col-span-12 lg:col-span-2 w-full"
+							className="col-span-12 lg:col-span-2 w-full lg:ml-[230px] xl:ml-[300px]"
 							type="submit"
 							disabled={isLoading}
 							variant={"green"}

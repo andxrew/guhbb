@@ -87,7 +87,7 @@ const VideoPage = () => {
 				bgColor="bg-orange-600/10"
 			/>
 			<div className="flex justify-between px-6 mb-2">
-				<h1 className="text-muted-foreground text-xs items-align">
+				<h1 className="text-muted-foreground text-xs items-center px-3">
 					1 tree planted for each generation{" "}
 				</h1>
 				<Badge variant="green">Trees Planted: {treeCount}</Badge>

@@ -19,7 +19,9 @@ export async function POST(req: Request) {
 			{
 				input: {
 					motion_module: "mm_sd_v14",
-					prompt: " masterpiece, best quality" + prompt,
+					prompt: " masterpiece, best quality, 8k," + prompt,
+					n_prompt:
+						" badhandv4, easynegative, ng_deepnegative_v1_75t, verybadimagenegative_v1.3, bad-artist, bad_prompt_version2-neg, teeth",
 				},
 			}
 		)

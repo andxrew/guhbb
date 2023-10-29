@@ -1,52 +1,31 @@
 import { NextResponse } from "next/server"
-import { Configuration, OpenAIApi } from "openai"
+import Replicate from "replicate"
 
-const configuration = new Configuration({
-	apiKey: process.env.OPENAI_API_KEY,
+const replicate = new Replicate({
+	auth: process.env.REPLICATE_API_TOKEN!,
 })
-
-const openai = new OpenAIApi(configuration)
 
 export async function POST(req: Request) {
 	try {
 		const body = await req.json()
-		const { prompt, amount = 1, resolution = "512x512" } = body
-
-		// if (!userId) {
-		// 	return new NextResponse("Unauthorized", { status: 401 });
-		// }
-
-		if (!configuration.apiKey) {
-			return new NextResponse("OpenAI API Key not configured.", {
-				status: 500,
-			})
-		}
+		const { prompt } = body
 
 		if (!prompt) {
-			return new NextResponse("Prompts are required", { status: 400 })
+			return new NextResponse("Prompt are required", { status: 400 })
 		}
 
-		if (!amount) {
-			return new NextResponse("Amount is required", { status: 400 })
-		}
+		const response = await replicate.run(
+			"luosiallen/latent-consistency-model:553803fd018b3cf875a8bc774c99da9b33f36647badfd88a6eec90d61c5f62fc",
+			{
+				input: {
+					prompt: prompt,
+				},
+			}
+		)
 
-		if (!resolution) {
-			return new NextResponse("resolution is required", { status: 400 })
-		}
-
-		// if (!freeTrial && !isPro) {
-		// 	return new NextResponse("Free trial has expired", { status: 403 })
-		// }
-
-		const response = await openai.createImage({
-			prompt,
-			n: parseInt(amount, 10),
-			size: resolution,
-		})
-
-		return NextResponse.json(response.data.data)
+		return NextResponse.json(response)
 	} catch (error) {
-		console.log("[IMAGE_ERROR]", error)
+		console.log("[MUSIC_ERROR]", error)
 		return new NextResponse("Internal Error", { status: 500 })
 	}
 }

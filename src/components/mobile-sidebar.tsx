@@ -30,7 +30,7 @@ const MobileSidebar = ({}: MobileSidebarProps) => {
 				</Button>
 			</SheetTrigger>
 			<SheetContent
-				side={"left"}
+				side={"top"}
 				className="p-0"
 			>
 				<Sidebar />

@@ -15,6 +15,9 @@ import {
 	FileCode,
 	Settings,
 	Bot,
+	Container,
+	Aperture,
+	MonitorPlay,
 } from "lucide-react"
 
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] })
@@ -34,19 +37,26 @@ const routes = [
 		color: "text-green-500",
 	},
 
-	// {
-	// 	label: "Image Generation",
-	// 	icon: FileImageIcon,
-	// 	href: "/image",
-	// 	color: "text-pink-700",
-	// },
+	{
+		label: "CodeBot",
+		icon: Container,
+		href: "/code",
+		color: "text-green-500",
+	},
 
-	// {
-	// 	label: "Video Generation",
-	// 	icon: Clapperboard,
-	// 	href: "/video",
-	// 	color: "text-orange-700",
-	// },
+	{
+		label: "PhotoBot",
+		icon: Aperture,
+		href: "/image",
+		color: "text-orange-600",
+	},
+
+	{
+		label: "GifBot",
+		icon: MonitorPlay,
+		href: "/video",
+		color: "text-orange-600",
+	},
 
 	// {
 	// 	label: "Music Generation",
@@ -54,13 +64,6 @@ const routes = [
 	// 	href: "/music",
 	// 	color: "text-emerald-500",
 	// },
-
-	{
-		label: "Code Generation",
-		icon: FileCode,
-		href: "/code",
-		color: "text-green-700",
-	},
 
 	{
 		label: "Settings",
@@ -80,15 +83,20 @@ const Sidebar = ({}: SidebarProps) => {
 					href={"/dashboard"}
 					className="flex items-center pl-3 mb-14"
 				>
-					<div className="relative w-8 h-8 mr-4">
+					<div className="relative w-10 h-8 mr-0">
 						<Image
 							fill
 							alt="Logo"
-							src="/logo.png"
+							src="/images/infinity_logo.png"
 						/>
 					</div>
-					<h1 className={cn("text-2xl font-bolt", montserrat.className)}>
-						Flair
+					<h1
+						className={cn(
+							"text-2xl font-bolt tracking-tight",
+							montserrat.className
+						)}
+					>
+						Infinity<span className="text-green-600">Tech </span>
 					</h1>
 				</Link>
 				<div className="space-y-1">

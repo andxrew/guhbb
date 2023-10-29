@@ -2,7 +2,7 @@
 
 import * as z from "zod"
 import axios from "axios"
-import { Clapperboard } from "lucide-react"
+import { Clapperboard, MonitorPlay } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 
@@ -40,7 +40,7 @@ const VideoPage = () => {
 
 			const response = await axios.post("/api/video", values)
 
-			setVideo(response.data[0])
+			setVideo(response.data)
 			form.reset()
 		} catch (error: any) {
 			if (error?.response?.status === 403) {
@@ -55,11 +55,11 @@ const VideoPage = () => {
 	return (
 		<div>
 			<Heading
-				title="Video Generation"
-				description="Creates Video from your prompts"
-				icon={Clapperboard}
-				iconColor="text-orange-700"
-				bgColor="bg-orange-700/10"
+				title="GifBot"
+				description="Gif, not Jif (Takes around 50 Seconds)"
+				icon={MonitorPlay}
+				iconColor="text-orange-600"
+				bgColor="bg-orange-600/10"
 			/>
 			<div className="px-4 lg:px-8">
 				<div>
@@ -78,7 +78,7 @@ const VideoPage = () => {
 												className="border-0 outline-none focus-visible:ring-0
                                             focus-visible:ring-transparent"
 												disabled={isLoading}
-												placeholder="Sponge in a coral reef"
+												placeholder="Anime Ninja, 8K, High Resolution"
 												{...field}
 											/>
 										</FormControl>
@@ -88,6 +88,7 @@ const VideoPage = () => {
 							<Button
 								className="col-span-12 lg:col-span-2 w-full"
 								disabled={isLoading}
+								variant={"green"}
 							>
 								Generate
 							</Button>
@@ -109,6 +110,8 @@ const VideoPage = () => {
 						<video
 							className="w-full aspect-video mt-8 rounded-lg border bg-black"
 							controls
+							loop
+							autoPlay
 						>
 							<source src={video}></source>
 						</video>

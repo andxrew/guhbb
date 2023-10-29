@@ -10,6 +10,9 @@ import {
 	FileCode,
 	Settings,
 	Bot,
+	Container,
+	Aperture,
+	MonitorPlay,
 } from "lucide-react"
 
 import { useRouter } from "next/navigation"
@@ -23,6 +26,27 @@ const tools = [
 		bgColor: "bg-green-500/10",
 	},
 
+	{
+		label: "CodeBot",
+		icon: Container,
+		href: "/code",
+		color: "text-green-500",
+		bgColor: "bg-green-500/10",
+	},
+	{
+		label: "Image Generation",
+		icon: Aperture,
+		href: "/image",
+		color: "text-orange-600",
+		bgColor: "bg-orange-600/10",
+	},
+	{
+		label: "Video generation",
+		icon: MonitorPlay,
+		href: "/video",
+		color: "text-orange-600",
+		bgColor: "bg-orange-600/10",
+	},
 	// {
 	// 	label: "Music Generation",
 	// 	icon: Headphones,
@@ -30,30 +54,6 @@ const tools = [
 	// 	color: "text-emerald-500",
 	// 	bgColor: "bg-emerald-500/10",
 	// },
-
-	// {
-	// 	label: "Image Generation",
-	// 	icon: FileImageIcon,
-	// 	href: "/image",
-	// 	color: "text-pink-700",
-	// 	bgColor: "bg-pink-700/10",
-	// },
-
-	// {
-	// 	label: "Video generation",
-	// 	icon: Clapperboard,
-	// 	href: "/video",
-	// 	color: "text-orange-700",
-	// 	bgColor: "bg-orange-700/10",
-	// },
-
-	{
-		label: "CodeBot",
-		icon: FileCode,
-		href: "/code",
-		color: "text-green-700",
-		bgColor: "bg-green-700/10",
-	},
 ]
 
 const DashboardPage = () => {
@@ -61,11 +61,11 @@ const DashboardPage = () => {
 	return (
 		<div>
 			<div className="mb-8 space-y-4">
-				<h2 className="text-2xl md:text-4xl font-bold text-center">
+				<h2 className="text-3xl md:text-4xl md:mt-8 font-bold text-center">
 					Explore the Power of AI
 				</h2>
 				<p className="text-muted-foreground font-light text-sm md:text-lg text-center">
-					Experience the power of Artificial Inteligence
+					Artificial Intelligence for a very real cause
 				</p>
 			</div>
 			<div className="px-4 md:px-20 lg:px-32 space-y-4">

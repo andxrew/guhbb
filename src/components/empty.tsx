@@ -11,12 +11,10 @@ export const Empty = ({ label }: EmptyProps) => {
 				<Image
 					alt="Empty"
 					fill
-					src={"/empty.png"}
+					src={"/images/earth.png"}
 				/>
 			</div>
-            <p className="text-muted-foreground text-sm text-center">
-                {label}
-            </p>
+			<p className="text-muted-foreground text-sm text-center">{label}</p>
 		</div>
 	)
 }

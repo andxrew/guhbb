@@ -7,7 +7,7 @@ export const Loader = () => {
 				<Image
 					alt="logo"
 					fill
-					src={"/src/images/infinity_logo.png"}
+					src={"/images/infinity_logo.png"}
 				/>
 			</div>
 			<p className="text-sm text-muted-foreground">IT is Working...</p>

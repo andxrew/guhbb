@@ -5,7 +5,7 @@ import axios from "axios"
 import Image from "next/image"
 import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Download, ImageIcon } from "lucide-react"
+import { Download, Aperture } from "lucide-react"
 import { useForm } from "react-hook-form"
 
 import { useRouter } from "next/navigation"
@@ -50,8 +50,10 @@ const ImagePage = () => {
 			setPhotos([])
 
 			const response = await axios.post("/api/image", values)
+			console.log(response.data)
 
-			const urls = response.data.map((image: { url: string }) => image.url)
+			// const urls = response.data.map((image: { url: string }) => image.url)
+			const urls = response.data.map((image: { url: string }) => image)
 
 			setPhotos(urls)
 		} catch (error: any) {
@@ -67,23 +69,23 @@ const ImagePage = () => {
 	return (
 		<div>
 			<Heading
-				title="Image Generation"
-				description="Turn your prompt into an image."
-				icon={ImageIcon}
-				iconColor="text-pink-700"
-				bgColor="bg-pink-700/10"
+				title="PhotoBot"
+				description="Prompts = Power, simple as that"
+				icon={Aperture}
+				iconColor="text-green-500"
+				bgColor="bg-green-500/10"
 			/>
 			<div className="px-4 lg:px-8">
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
 						className="
-              rounded-lg 
-              border 
-              w-full 
-              p-4 
-              px-3 
-              md:px-6 
+              rounded-lg
+              border
+              w-full
+              p-4
+              px-3
+              md:px-6
               focus-within:shadow-sm
               grid
               grid-cols-12
@@ -98,14 +100,14 @@ const ImagePage = () => {
 										<Input
 											className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
 											disabled={isLoading}
-											placeholder="A picture of a horse in Swiss alps"
+											placeholder="Man on the moon"
 											{...field}
 										/>
 									</FormControl>
 								</FormItem>
 							)}
 						/>
-						<FormField
+						{/* <FormField
 							control={form.control}
 							name="amount"
 							render={({ field }) => (
@@ -134,8 +136,8 @@ const ImagePage = () => {
 									</Select>
 								</FormItem>
 							)}
-						/>
-						<FormField
+						/> */}
+						{/* <FormField
 							control={form.control}
 							name="resolution"
 							render={({ field }) => (
@@ -164,11 +166,12 @@ const ImagePage = () => {
 									</Select>
 								</FormItem>
 							)}
-						/>
+						/> */}
 						<Button
 							className="col-span-12 lg:col-span-2 w-full"
 							type="submit"
 							disabled={isLoading}
+							variant={"green"}
 							size="icon"
 						>
 							Generate
@@ -183,10 +186,10 @@ const ImagePage = () => {
 				{photos.length === 0 && !isLoading && (
 					<Empty label="No images generated." />
 				)}
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
-					{photos.map((src) => (
+				<div className="grid grid-cols-1  gap-4 mt-8">
+					{photos.map((src, index) => (
 						<Card
-							key={src}
+							key={index}
 							className="rounded-lg overflow-hidden"
 						>
 							<div className="relative aspect-square">
@@ -215,3 +218,55 @@ const ImagePage = () => {
 }
 
 export default ImagePage
+
+// import React, { useState, useEffect } from "react"
+// import axios from "axios"
+// import Image from "next/image"
+
+// const ImageDisplay = () => {
+// 	const [images, setImages] = useState([])
+
+// 	useEffect(() => {
+// 		const fetchData = async () => {
+// 			try {
+// 				const response = await axios.post("/api/image", {
+// 					prompt: "volcano",
+// 				}) // Replace 'your-prompt-here' with the actual prompt
+// 				setImages(response.data) // Assuming the API response is an array of image URLs
+// 			} catch (error) {
+// 				console.error("Error fetching images:", error)
+// 			}
+// 		}
+
+// 		fetchData() // Fetch images when the component mounts
+
+// 		// Optionally, you can add a cleanup function for useEffect if needed
+// 		// return () => {
+// 		//   cleanup logic here
+// 		// };
+// 	}, []) // Empty dependency array ensures the effect runs once after the initial render
+
+// 	return (
+// 		<div className="container mx-auto p-4">
+// 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+// 				{images.map((imageUrl, index) => (
+// 					<div
+// 						key={index}
+// 						className="max-w-xs rounded overflow-hidden shadow-lg"
+// 					>
+// 						<Image
+// 							src={imageUrl}
+// 							alt={`Image ${index}`}
+// 							fill
+// 						/>
+// 						<div className="px-6 py-4">
+// 							{/* Additional details or metadata about the image can be displayed here */}
+// 						</div>
+// 					</div>
+// 				))}
+// 			</div>
+// 		</div>
+// 	)
+// }
+
+// export default ImageDisplay

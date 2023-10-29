@@ -4,6 +4,9 @@ import { Dialog } from "@headlessui/react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { Weight } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import { cn } from "@/lib/utils"
+import { Montserrat } from "next/font/google"
 
 const navigation = [
 	{ name: "Product", href: "#" },
@@ -11,6 +14,8 @@ const navigation = [
 	{ name: "Marketplace", href: "#" },
 	{ name: "Company", href: "#" },
 ]
+
+const montserrat = Montserrat({ weight: "600", subsets: ["latin"] })
 
 export default function Example() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -46,29 +51,47 @@ export default function Example() {
 				</svg>
 			</div>
 			<div className="px-6 pt-6 lg:px-8">
-				<nav
-					className="flex items-center justify-between"
-					aria-label="Global"
-				>
-					<div className="flex lg:flex-1">
+				<nav className="flex items-center justify-between p-4">
+					<div className="flex items-center space-x-6">
+						<Link
+							href="/dashboard"
+							className="flex items-center mr-[370px]"
+						>
+							<div className="relative w-10 h-8">
+								<Image
+									fill
+									alt="Logo"
+									src="/images/infinity_logo.png"
+								/>
+							</div>
+							<h1 className="text-2xl font-bold tracking-tight">
+								Infinity<span className="text-green-600">Tech </span>
+							</h1>
+						</Link>
+						<div className="hidden lg:flex space-x-6">
+							{navigation.map((item) => (
+								<a
+									key={item.name}
+									href={item.href}
+									className="text-sm font-semibold leading-6 text-green-900 hover:text-green-600"
+								>
+									{item.name}
+								</a>
+							))}
+						</div>
+					</div>
+					<div className="hidden lg:flex space-x-4">
 						<a
 							href="#"
-							className="-m-1.5 p-1.5"
+							className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-600"
 						>
-							<span className="sr-only">Your Company</span>
-							<Image
-								className="h-8"
-								src={"/public/images/infinity_logo.png"}
-								alt="infinity_logo"
-								width="60"
-								height="180"
-							/>
+							Log in <span aria-hidden="true">&rarr;</span>
 						</a>
 					</div>
-					<div className="flex lg:hidden">
+					<div className="lg:hidden">
 						<button
 							type="button"
-							className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+							className="p-2 text-gray-700"
 							onClick={() => setMobileMenuOpen(true)}
 						>
 							<span className="sr-only">Open main menu</span>
@@ -78,26 +101,8 @@ export default function Example() {
 							/>
 						</button>
 					</div>
-					<div className="hidden lg:flex lg:gap-x-12">
-						{navigation.map((item) => (
-							<a
-								key={item.name}
-								href={item.href}
-								className="text-sm font-semibold leading-6 text-green-900"
-							>
-								{item.name}
-							</a>
-						))}
-					</div>
-					<div className="hidden lg:flex lg:flex-1 lg:justify-end">
-						<a
-							href="#"
-							className="text-sm font-semibold leading-6 text-gray-900"
-						>
-							Log in <span aria-hidden="true">&rarr;</span>
-						</a>
-					</div>
 				</nav>
+
 				<Dialog
 					as="div"
 					open={mobileMenuOpen}
@@ -108,17 +113,18 @@ export default function Example() {
 						className="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden"
 					>
 						<div className="flex items-center justify-between">
-							<a
-								href="#"
-								className="-m-1.5 p-1.5"
+							<Link
+								href={"/dashboard"}
+								className="flex items-center pl-3 mb-14"
 							>
-								<span className="sr-only">Your Company</span>
-								<img
-									className="h-8"
-									src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-									alt=""
-								/>
-							</a>
+								<div className="relative w-10 h-8 mr-0">
+									<Image
+										fill
+										alt="Logo"
+										src="/images/infinity_logo.png"
+									/>
+								</div>
+							</Link>
 							<button
 								type="button"
 								className="-m-2.5 rounded-md p-2.5 text-gray-700"

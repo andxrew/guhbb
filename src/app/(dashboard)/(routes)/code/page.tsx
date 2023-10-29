@@ -2,7 +2,7 @@
 
 import * as z from "zod"
 import axios from "axios"
-import { FileCode } from "lucide-react"
+import { Container, FileCode } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { useState } from "react"
 import ReactMarkdown from "react-markdown"
@@ -65,11 +65,11 @@ const CodePage = () => {
 	return (
 		<div>
 			<Heading
-				title="Code Generation"
+				title="CodeBot"
 				description="Generate code using prompts"
-				icon={FileCode}
-				iconColor="text-green-700"
-				bgColor="bg-green-700/10"
+				icon={Container}
+				iconColor="text-green-500"
+				bgColor="bg-green-500/10"
 			/>
 			<div className="px-4 lg:px-8">
 				<div>
@@ -98,6 +98,7 @@ const CodePage = () => {
 							<Button
 								className="col-span-12 lg:col-span-2 w-full"
 								disabled={isLoading}
+								variant={"green"}
 							>
 								Submit
 							</Button>
@@ -122,7 +123,7 @@ const CodePage = () => {
 								className={cn(
 									"p-8 w-full flex items-start gap-x-8 rounded-lg",
 									message.role === "user"
-										? "bg-white border border-black/10"
+										? "bg-white  bg-green-500/10"
 										: "bg-muted"
 								)}
 							>

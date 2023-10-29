@@ -171,9 +171,18 @@ export default function Example() {
 								Sustainable AI for a Greener Tomorrow
 							</h1>
 							<p className="mt-6 text-lg leading-8 text-green-800 font-bold">
-								Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-								lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-								fugiat aliqua.
+								With Infinity, your interactions help contribute to UK tree
+								charities such as{" "}
+								<a
+									href="https://www.woodlandtrust.org.uk"
+									className="text-green-500"
+									target="_blank"
+								>
+									Woodland Trust
+								</a>{" "}
+								helping nurture our planets future and making a difference. Join
+								us in creating art, music, and a greener world, one chat at a
+								time.
 							</p>
 							<div className="mt-10 flex items-center justify-center gap-x-6">
 								<a
@@ -221,10 +230,10 @@ export default function Example() {
 									y2="474.645"
 									gradientUnits="userSpaceOnUse"
 								>
-									<stop stopColor="#9089FC" />
+									<stop stopColor="#62e856" />
 									<stop
 										offset={1}
-										stopColor="#FF80B5"
+										stopColor="#62e856"
 									/>
 								</linearGradient>
 							</defs>

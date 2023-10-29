@@ -9,10 +9,10 @@ import { cn } from "@/lib/utils"
 import { Montserrat } from "next/font/google"
 
 const navigation = [
-	{ name: "Product", href: "#" },
-	{ name: "Features", href: "#" },
-	{ name: "Marketplace", href: "#" },
-	{ name: "Company", href: "#" },
+	{ name: "", href: "#" },
+	{ name: "", href: "#" },
+	{ name: "", href: "#" },
+	{ name: "", href: "#" },
 ]
 
 const montserrat = Montserrat({ weight: "600", subsets: ["latin"] })

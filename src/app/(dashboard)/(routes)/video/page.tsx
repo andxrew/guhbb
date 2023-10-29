@@ -4,7 +4,7 @@ import * as z from "zod"
 import axios from "axios"
 import { Clapperboard, MonitorPlay } from "lucide-react"
 import { useForm } from "react-hook-form"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import { useRouter } from "next/navigation"
 
@@ -18,12 +18,15 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form"
 
 import { formSchema } from "./constants"
 
-import { toast } from "react-hot-toast"
+import toast, { Toaster } from "react-hot-toast"
+import { Badge } from "@/components/ui/badge"
 
 const VideoPage = () => {
 	const router = useRouter()
 
+	const [treeCount, setTreeCount] = useState(0)
 	const [video, setVideo] = useState<string>()
+	const [requestCount, setRequestCount] = useState(0)
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -35,6 +38,7 @@ const VideoPage = () => {
 	const isLoading = form.formState.isSubmitting
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
+		setRequestCount((prevCount) => prevCount + 1)
 		try {
 			setVideo(undefined)
 
@@ -52,8 +56,29 @@ const VideoPage = () => {
 		}
 	}
 
+	useEffect(() => {
+		if (requestCount > 0 && requestCount % 1 === 0) {
+			// Plant a tree action when request count is a multiple of 10
+			plantTree()
+		}
+	}, [requestCount]) // Run the effect whenever requestCount changes
+
+	const plantTree = () => {
+		// Implement tree planting logic here
+		// For example: send a request to your tree planting API endpoint
+		// axios.post("/api/plant-tree", { userId: userId });
+		console.log("Tree planted!")
+
+		// Increase the tree count by 1 when a tree is planted
+		setTreeCount((prevCount) => prevCount + 1)
+
+		// Display a toast notification when a tree is planted
+		toast.success("Tree Planted! 🌳")
+	}
+
 	return (
 		<div>
+			<Toaster />
 			<Heading
 				title="GifBot"
 				description="Gif, not Jif (Takes around 50 Seconds)"
@@ -61,6 +86,12 @@ const VideoPage = () => {
 				iconColor="text-orange-600"
 				bgColor="bg-orange-600/10"
 			/>
+			<div className="flex justify-between px-6 mb-2">
+				<h1 className="text-muted-foreground text-xs items-align">
+					1 tree planted for each generation{" "}
+				</h1>
+				<Badge variant="green">Trees Planted: {treeCount}</Badge>
+			</div>
 			<div className="px-4 lg:px-8">
 				<div>
 					<Form {...form}>

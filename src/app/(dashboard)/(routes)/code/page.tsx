@@ -4,7 +4,7 @@ import * as z from "zod"
 import axios from "axios"
 import { Container, FileCode } from "lucide-react"
 import { useForm } from "react-hook-form"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ReactMarkdown from "react-markdown"
 
 import { useRouter } from "next/navigation"
@@ -22,11 +22,14 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form"
 import { cn } from "@/lib/utils"
 
 import { formSchema } from "./constants"
-import { toast } from "react-hot-toast"
+import { Toaster, toast } from "react-hot-toast"
+import { Badge } from "@/components/ui/badge"
 
 const CodePage = () => {
 	const router = useRouter()
 
+	const [treeCount, setTreeCount] = useState(0)
+	const [requestCount, setRequestCount] = useState(0)
 	const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([])
 
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -40,6 +43,8 @@ const CodePage = () => {
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		try {
+			setRequestCount((prevCount) => prevCount + 1)
+
 			const userMessage: ChatCompletionRequestMessage = {
 				role: "user",
 				content: values.prompt,
@@ -62,8 +67,29 @@ const CodePage = () => {
 		}
 	}
 
+	useEffect(() => {
+		if (requestCount > 0 && requestCount % 10 === 0) {
+			// Plant a tree action when request count is a multiple of 10
+			plantTree()
+		}
+	}, [requestCount]) // Run the effect whenever requestCount changes
+
+	const plantTree = () => {
+		// Implement tree planting logic here
+		// For example: send a request to your tree planting API endpoint
+		// axios.post("/api/plant-tree", { userId: userId });
+		console.log("Tree planted!")
+
+		// Increase the tree count by 1 when a tree is planted
+		setTreeCount((prevCount) => prevCount + 1)
+
+		// Display a toast notification when a tree is planted
+		toast.success("Tree Planted! 🌳")
+	}
+
 	return (
 		<div>
+			<Toaster />
 			<Heading
 				title="CodeBot"
 				description="Generate code using prompts"
@@ -71,6 +97,12 @@ const CodePage = () => {
 				iconColor="text-green-500"
 				bgColor="bg-green-500/10"
 			/>
+			<div className="flex justify-between px-6 mb-2">
+				<h1 className="text-muted-foreground text-xs items-align">
+					1 tree planted for each 10 generations{" "}
+				</h1>
+				<Badge variant="green">Trees Planted: {treeCount}</Badge>
+			</div>
 			<div className="px-4 lg:px-8">
 				<div>
 					<Form {...form}>

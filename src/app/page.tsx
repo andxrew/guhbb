@@ -55,7 +55,7 @@ export default function Example() {
 					<div className="flex items-center space-x-6">
 						<Link
 							href="/dashboard"
-							className="flex items-center mr-[370px]"
+							className="flex items-center lg:mr-[370px]"
 						>
 							<div className="relative w-10 h-8">
 								<Image
@@ -82,8 +82,8 @@ export default function Example() {
 					</div>
 					<div className="hidden lg:flex space-x-4">
 						<a
-							href="#"
-							className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-600"
+							href="/dashboard"
+							className="text-sm font-semibold md:leading-6 text-gray-900 hover:text-gray-600"
 						>
 							Log in <span aria-hidden="true">&rarr;</span>
 						</a>
@@ -152,7 +152,7 @@ export default function Example() {
 								</div>
 								<div className="py-6">
 									<a
-										href="#"
+										href="/dashboard"
 										className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
 									>
 										Log in
@@ -186,7 +186,7 @@ export default function Example() {
 							</p>
 							<div className="mt-10 flex items-center justify-center gap-x-6">
 								<a
-									href="#"
+									href="/dashboard"
 									className="rounded-md bg-green-600 hover:bg-green-400 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-400"
 								>
 									Get started

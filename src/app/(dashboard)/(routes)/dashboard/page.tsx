@@ -66,6 +66,10 @@ const DashboardPage = () => {
 				</h2>
 				<p className="text-muted-foreground font-light text-sm md:text-lg text-center">
 					Artificial Intelligence for a very real cause
+					<br />
+					<span className="text-green-600 font-semibold">
+						For each query, we will plant a tree!
+					</span>
 				</p>
 			</div>
 			<div className="px-4 md:px-20 lg:px-32 space-y-4">

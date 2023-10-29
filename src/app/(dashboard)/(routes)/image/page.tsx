@@ -3,7 +3,7 @@
 import * as z from "zod"
 import axios from "axios"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Download, Aperture } from "lucide-react"
 import { useForm } from "react-hook-form"
@@ -28,11 +28,15 @@ import {
 
 import { amountOptions, formSchema, resolutionOptions } from "./constants"
 
-import { toast } from "react-hot-toast"
+import { Toaster, toast } from "react-hot-toast"
+import { Badge } from "@/components/ui/badge"
 
 const ImagePage = () => {
 	const router = useRouter()
+
+	const [treeCount, setTreeCount] = useState(0)
 	const [photos, setPhotos] = useState<string[]>([])
+	const [requestCount, setRequestCount] = useState(0)
 
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -46,6 +50,7 @@ const ImagePage = () => {
 	const isLoading = form.formState.isSubmitting
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
+		setRequestCount((prevCount) => prevCount + 1)
 		try {
 			setPhotos([])
 
@@ -66,15 +71,42 @@ const ImagePage = () => {
 		}
 	}
 
+	useEffect(() => {
+		if (requestCount > 0 && requestCount % 5 === 0) {
+			// Plant a tree action when request count is a multiple of 10
+			plantTree()
+		}
+	}, [requestCount]) // Run the effect whenever requestCount changes
+
+	const plantTree = () => {
+		// Implement tree planting logic here
+		// For example: send a request to your tree planting API endpoint
+		// axios.post("/api/plant-tree", { userId: userId });
+		console.log("Tree planted!")
+
+		// Increase the tree count by 1 when a tree is planted
+		setTreeCount((prevCount) => prevCount + 1)
+
+		// Display a toast notification when a tree is planted
+		toast.success("Tree Planted! 🌳")
+	}
+
 	return (
 		<div>
+			<Toaster />
 			<Heading
 				title="PhotoBot"
 				description="Prompts = Power, simple as that"
 				icon={Aperture}
-				iconColor="text-green-500"
-				bgColor="bg-green-500/10"
+				iconColor="text-orange-600"
+				bgColor="bg-orange-600/10"
 			/>
+			<div className="flex justify-between px-6 mb-2">
+				<h1 className="text-muted-foreground text-xs items-align">
+					1 tree planted for each 5 generations{" "}
+				</h1>
+				<Badge variant="green">Trees Planted: {treeCount}</Badge>
+			</div>
 			<div className="px-4 lg:px-8">
 				<Form {...form}>
 					<form
@@ -100,7 +132,7 @@ const ImagePage = () => {
 										<Input
 											className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
 											disabled={isLoading}
-											placeholder="Man on the moon"
+											placeholder="The Moon (Trust me)"
 											{...field}
 										/>
 									</FormControl>
